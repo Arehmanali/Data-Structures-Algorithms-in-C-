@@ -2,24 +2,32 @@
 #include<iostream>
 using namespace std;
 
-
+//Defined a struct node
 struct node{
 	
 	int data;
 	node *next;
-	
-	
 	};
 
+//Function to check if List is empty
 bool isEmpty(node *head){
+	
 	if(head==NULL){
+		
 		return true;
+		
 	}
 	else {
+		
 		return false;
+	
 	}
+	
 }
+
+//Menu Function
 char menu(){
+	
 	char choice;
 	cout<<"Menu"<<endl;
 	cout<<"1. Add an item \n";
@@ -31,28 +39,42 @@ char menu(){
 	return choice;
 }
 
+//Function to insert as first Element
 void insertAsFirstElement(node *&head, node *&last , int data){
+	
 	node *temp= new node;
 	temp->data=data;
 	temp->next=NULL;
-		head=temp;
-		last=temp;
+	head=temp;
+	last=temp;
 }
+
+//Funtion to insert in the list
 void insert(node *&head, node *&last , int data){
+	
 	if(isEmpty(head)){
+		
 		insertAsFirstElement(head,last,data);
+		
 	}
 	else{
+		
 		node *temp=new node;
 		temp->data=data;
 		temp->next=NULL;
 		last->next=temp;
 		last=temp;
+		
 	}
 }
+
+//Function to remove from List
 void remove(node *&head, node *&last){
+	
 	if(isEmpty(head)){
-		cout<<"empty"<<endl;
+		
+		cout<<"List is empty"<<endl;
+		
 	}
 	else if(head==last){
 		delete head;
@@ -65,9 +87,11 @@ void remove(node *&head, node *&last){
 		delete temp;
 	}
 }
+
+//Function to print all the data in the Linked List
 void showList(node * current){
 	if(isEmpty(current)){
-		cout<<"empty"<<endl;
+		cout<<"List is empty"<<endl;
 	}
 	else{
 		 cout<<"The list contains:"<<endl; 
