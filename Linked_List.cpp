@@ -1,0 +1,114 @@
+//This programs contains node construct in which we defined functions to add, remove  and show list
+#include<iostream>
+using namespace std;
+
+
+struct node{
+	
+	int data;
+	node *next;
+	
+	
+	};
+
+bool isEmpty(node *head){
+	if(head==NULL){
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+char menu(){
+	char choice;
+	cout<<"Menu"<<endl;
+	cout<<"1. Add an item \n";
+	cout<<"2. Remove an item \n";
+	cout<<"3. Show the List. \n";
+	cout<<"4. Exit \n"n;
+	
+	cin>>choice;
+	return choice;
+}
+
+void insertAsFirstElement(node *&head, node *&last , int data){
+	node *temp= new node;
+	temp->data=data;
+	temp->next=NULL;
+		head=temp;
+		last=temp;
+}
+void insert(node *&head, node *&last , int data){
+	if(isEmpty(head)){
+		insertAsFirstElement(head,last,data);
+	}
+	else{
+		node *temp=new node;
+		temp->data=data;
+		temp->next=NULL;
+		last->next=temp;
+		last=temp;
+	}
+}
+void remove(node *&head, node *&last){
+	if(isEmpty(head)){
+		cout<<"empty"<<endl;
+	}
+	else if(head==last){
+		delete head;
+		head=NULL;
+		last=NULL;
+	}
+	else{
+		node *temp=head;
+		head=head->next;
+		delete temp;
+	}
+}
+void showList(node * current){
+	if(isEmpty(current)){
+		cout<<"empty"<<endl;
+	}
+	else{
+		 cout<<"The list contains:"<<endl; 
+		 while(current!=NULL){
+		 	cout<<current->data<<endl;
+		 	current=current->next;
+		 }
+	}
+}
+
+ 
+
+
+int main(){
+	node * head=NULL;
+	node * last=NULL;
+	char choice;
+	int data;
+	
+	do{
+		choice=menu();
+		switch(choice){
+			
+			case '1':
+				cout<<"Please enter a number";
+				cin>>data;
+				insert(head, last, data);
+				break;
+				
+			case '2': 
+				remove(head, last);
+				break;
+				
+			case '3':
+				showList(head);
+				break;
+				
+			default: cout<<"System exit\n";
+		}
+	}while(choice !='4');
+	
+	
+	return 0;
+}
