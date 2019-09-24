@@ -5,18 +5,23 @@
 
 using namespace std;
 
+//Declared Cstack class
 class cStack {
 
 	cNode *top;
 	
 public:
+	
+	//Default constructor setting the value of top pointer to NULL
 	cStack() :top(NULL) {};
 
+	//Parameterized Constructor
 	cStack(cNode *&ptr) :top(ptr) {
 		top->next = NULL;
 		ptr = NULL;
 	}
 
+	//Function to check if Stack is not empty
 	bool isNotEmpty() const {
 		if (top != NULL) {
 			return true;
@@ -26,6 +31,7 @@ public:
 		}
 	}
 
+	//Function to check if stack is empty
 	bool isEmpty() const {
 		if (top == NULL) {
 			return true;
@@ -35,6 +41,7 @@ public:
 		}
 	}
 
+	//Cascaded push function which addes a new node to Stack at top
 	cStack & push(cNode *&ptr) {
 		ptr->next = top;
 		top = ptr;
@@ -42,6 +49,7 @@ public:
 		return *this;
 	}
 
+	//Cascaded pop function which removes the last node from Stack
 	cNode * pop() {
 		cNode *ptr;
 		ptr = top;
@@ -50,6 +58,7 @@ public:
 		return ptr;
 	}
 
+	//Function to print the Stack
 	void print() const {
 		if (!top) {
 			cout << "Stack is empty." << endl;
@@ -64,6 +73,7 @@ public:
 		}
 	}
 
+	//Destructor
 	~cStack() {
 		cNode *ptr = top;
 		while (ptr) {
@@ -73,6 +83,7 @@ public:
 		}
 	}
 
+	//Self Defined Copy Constructor
 	cStack(const cStack & src) {
 		this->top = src.top;
 		if (src.top) {
@@ -88,6 +99,7 @@ public:
 		}
 	}
 
+	//Self Defined Assignment Operator
 	cStack & operator = (const cStack & rObj) {
 		if (this == &rObj) {
 			return *this;
