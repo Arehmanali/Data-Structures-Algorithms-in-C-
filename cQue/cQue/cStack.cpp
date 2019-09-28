@@ -8,10 +8,10 @@ using namespace std;
 //Declared Cstack class
 class cStack {
 
-	cNode *top;
+	
 
 public:
-
+	cNode *top;
 	cStack() :top(NULL) {};
 	cStack(cNode *& ptr) : top(ptr) {
 		top->next = NULL;
@@ -110,7 +110,8 @@ class cQue : protected cStack {
 	cNode *tail;
 public:
 	cQue() :tail(NULL) {};
-	cQue(cNode *& ptr) :cStack(ptr) { tail(top);}
+	//Still needs verification
+	cQue(cNode *& ptr) :cStack(ptr) { tail=top;}
 
 	bool isNotEmpty() const {
 		return cStack::isEmpty();
