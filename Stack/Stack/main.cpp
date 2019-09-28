@@ -5,6 +5,8 @@
 using namespace std;
 
 int main() {
-	cStack obj;
-	obj.push();
+	cStack obj1;
+	cNode obj2(20);
+	obj1.push(&obj2);
+	obj1.print();
 }
