@@ -35,3 +35,4 @@ public:
 	}
 
 };
+#pragma once
