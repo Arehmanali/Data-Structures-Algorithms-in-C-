@@ -8,11 +8,12 @@ using namespace std;
 //Declared Cstack class
 class cStack {
 
-	
+protected:
+	cNode *top;
 
 public:
-	cNode *top;
 	cStack() :top(NULL) {};
+
 	cStack(cNode *& ptr) : top(ptr) {
 		top->next = NULL;
 		ptr = NULL;
@@ -47,14 +48,15 @@ public:
 		cNode * ptr = top;
 		top = top->next;
 		ptr->next = NULL;
+		return ptr;
 	}
 
 	void print() const {
-		if (!top) {
-			cout << "/nIt is empty/n";
+		if (top==NULL) {
+			cout << "\nIt is empty\n";
 		}
 		else {
-			cout << "/nThe data is:/n";
+			cout << "\nThe data is:";
 			cNode *ptr = top;
 			while (ptr) {
 				ptr->print();
@@ -84,7 +86,7 @@ public:
 		}
 		if (true) {
 			cStack temp;
-			temp.top = top;
+			temp.top =this->top;
 		}
 		if (true) {
 			cStack temp;
@@ -106,35 +108,96 @@ public:
 
 };
 
-class cQue : protected cStack {
+class cque :protected cStack {
+
 	cNode *tail;
 public:
-	cQue() :tail(NULL) {};
-	//Still needs verification
-	cQue(cNode *& ptr) :cStack(ptr) { tail=top;}
+
+	cque() :tail(NULL) {};
+	
+	cque(cNode * &ptr) :cStack(ptr) { tail = top; };
 
 	bool isNotEmpty() const {
+		return cStack::isNotEmpty();
+	}
+
+	bool isEmpty() const {
 		return cStack::isEmpty();
 	}
 
 	cNode * remove() {
-		if (!top->next) {
+		if (top->next != NULL) {
 			tail = NULL;
 		}
 		return cStack::pop();
 	}
-
-	cQue(const cQue & src) :cStack((cStack)&src) {
-
-		tail = top;
-		while (tail) 
-			if (tail == NULL) {
-				break;
-			}
+	
+	cque & add(cNode *& ptr) {
+		if (tail) {
+			tail->next = ptr;
 			tail = tail->next;
 		}
+		else {
+			tail = top = ptr;
+		}
+		tail->next = NULL;
+		ptr = NULL;
+		return *this;
+	}
 
+	/*cque(const cque & src) : cStack((cStack &)src) {
+		tail = top; //Handeled the empty case
+
+		if (!top) {
+			return cque;
+		}
+		while (tail) {
+
+			tail = tail->next;
+		}*/
+	cque (const cque & src){
+		this->top = src.top;
+		this->tail = src.tail;
+		if (src.top) {
+			cNode *sptr, *dptr;
+			dptr = top = new cNode(*src.top);
+			sptr = top->next;
+
+			while (sptr) {
+				dptr->next = new cNode(*sptr);
+				dptr = dptr->next;
+				sptr = sptr->next;
+				tail = dptr;
+			}
+		}
+	}
+
+	cque & operator =(const cque &obj) {
+		if (this == &obj) {
+			return *this;
+		}
+
+		if (true) {
+			cque temp;
+			temp.top = top;
+			temp.tail = tail;
+		}
+		if (true) {
+			cque temp;
+			temp = obj;
+			top = temp.top;
+			tail = temp.tail;
+			temp.top = NULL;
+			temp.tail = NULL;
+			return *this;
+		}
+	}
+
+	void print() const {
+		cStack::print();
 	}
 
 
 };
+
+#pragma once
