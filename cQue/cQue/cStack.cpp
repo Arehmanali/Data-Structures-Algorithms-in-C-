@@ -145,33 +145,35 @@ public:
 		return *this;
 	}
 
-	/*cque(const cque & src) : cStack((cStack &)src) {
+	cque (const cque & src) : cStack((cStack &)src) {
 		tail = top; //Handeled the empty case
 
-		if (!top) {
-			return cque;
-		}
-		while (tail) {
 
+		while (tail) {
+			if (!tail->next) {
+				break;
+			}
 			tail = tail->next;
-		}*/
+		}
+	}/*
 	cque (const cque & src){
 		this->top = src.top;
 		this->tail = src.tail;
 		if (src.top) {
 			cNode *sptr, *dptr;
 			dptr = top = new cNode(*src.top);
-			sptr = top->next;
+			sptr = src.top->next;
 
 			while (sptr) {
 				dptr->next = new cNode(*sptr);
 				dptr = dptr->next;
 				sptr = sptr->next;
-				tail = dptr;
+				
 			}
+			tail = dptr;
 		}
 	}
-
+	*/
 	cque & operator =(const cque &obj) {
 		if (this == &obj) {
 			return *this;
