@@ -38,7 +38,9 @@ int main() {
 	cNode *ptr6 = new cNode(44447);
 	obj2.add(ptr6);
 	obj2.print();
-	obj2.remove();
-	obj2.print();
+	cque obj3(obj2);
+	obj3.print();
+	cque obj4 = obj3;
+	obj4.print();
 	system("pause");
 }
