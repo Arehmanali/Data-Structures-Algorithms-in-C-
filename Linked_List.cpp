@@ -1,4 +1,4 @@
-;This programs contains node construct in which we defined functions to add, remove  and show list
+;This programs contains node construct in which we defined functions to add, remove  and show list list of nodes using struct
 #include<iostream>
 using namespace std;
 
