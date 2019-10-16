@@ -1,15 +1,15 @@
-//This programs contains node construct in which we defined functions to add, remove  and show list
+;This programs contains node construct in which we defined functions to add, remove  and show list
 #include<iostream>
 using namespace std;
 
-//Defined a struct node
+;Defined a struct node
 struct node{
 	
 	int data;
 	node *next;
 	};
 
-//Function to check if List is empty
+;Function to check if List is empty
 bool isEmpty(node *head){
 	
 	if(head==NULL){
@@ -25,7 +25,7 @@ bool isEmpty(node *head){
 	
 }
 
-//Menu Function
+;Menu Function
 char menu(){
 	
 	char choice;
@@ -39,7 +39,7 @@ char menu(){
 	return choice;
 }
 
-//Function to insert as first Element
+;Function to insert as first Element
 void insertAsFirstElement(node *&head, node *&last , int data){
 	
 	node *temp= new node;
@@ -49,7 +49,7 @@ void insertAsFirstElement(node *&head, node *&last , int data){
 	last=temp;
 }
 
-//Funtion to insert in the list
+;Funtion to insert in the list
 void insert(node *&head, node *&last , int data){
 	
 	if(isEmpty(head)){
@@ -68,7 +68,7 @@ void insert(node *&head, node *&last , int data){
 	}
 }
 
-//Function to remove from List
+;lFunction to remove from List
 void remove(node *&head, node *&last){
 	
 	if(isEmpty(head)){
@@ -88,7 +88,7 @@ void remove(node *&head, node *&last){
 	}
 }
 
-//Function to print all the data in the Linked List
+;lFunction to print all the data in the Linked List
 void showList(node * current){
 	if(isEmpty(current)){
 		cout<<"List is empty"<<endl;
